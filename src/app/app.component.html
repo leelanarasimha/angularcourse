@@ -1,11 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <ul class="nav flex-column">
-        <li class="nav-item"><a routerLink="/">Home</a></li>
-        <li class="nav-item"><a routerLink="/users">Users</a></li>
+      <ul class="nav flex-column nav-pills">
         <li class="nav-item">
-          <a [routerLink]="['/categories']">Categories</a>
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users" routerLinkActive="active"
+            >Users</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/categories']"
+            routerLinkActive="active"
+            >Categories</a
+          >
         </li>
       </ul>
     </div>
