@@ -37,4 +37,10 @@ export class UserComponent implements OnInit {
       fragment: 'loading',
     });
   }
+
+  onUserEdit() {
+    this.router.navigate(['/users', this.user.id, this.user.name, 'edit'], {
+      queryParamsHandling: 'preserve',
+    });
+  }
 }
