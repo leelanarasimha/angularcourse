@@ -1,12 +1,21 @@
-<p>users works!</p>
+<ul class="nav flex-column">
+  <li class="nav-item">
+    <a [routerLink]="['/users', 1, 'Rama']" class="nav-link"
+      >Get Rama Details</a
+    >
+  </li>
+  <li class="nav-item">
+    <a [routerLink]="['/users', 1, 'Krishna']" class="nav-link"
+      >Get Krishna Details</a
+    >
+  </li>
+  <li class="nav-item">
+    <a [routerLink]="['/users', 1, 'Leela']" class="nav-link"
+      >Get Leela Details</a
+    >
+  </li>
+</ul>
 
 <div>
-  <button (click)="onCategoriesClick()">Go To Catgeories</button>
+  <router-outlet></router-outlet>
 </div>
-
-<a
-  [routerLink]="['/users', 1, 'Leela']"
-  [queryParams]="{ page: 1, search: 'Leela' }"
-  [fragment]="'loading'"
-  >Get Leela Details</a
->
