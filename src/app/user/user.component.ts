@@ -21,6 +21,14 @@ export class UserComponent implements OnInit {
         name: data['name'],
       };
     });
+
+    this.route.queryParams.subscribe((data) => {
+      console.log(data);
+    });
+
+    this.route.fragment.subscribe((data) => {
+      console.log(data);
+    });
   }
 
   getRamaDetails() {

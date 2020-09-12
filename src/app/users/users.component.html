@@ -3,3 +3,10 @@
 <div>
   <button (click)="onCategoriesClick()">Go To Catgeories</button>
 </div>
+
+<a
+  [routerLink]="['/users', 1, 'Leela']"
+  [queryParams]="{ page: 1, search: 'Leela' }"
+  [fragment]="'loading'"
+  >Get Leela Details</a
+>
