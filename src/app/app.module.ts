@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,8 @@ const appRoutes: Routes = [
   },
 
   { path: 'categories', component: CategoriesComponent },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({
@@ -31,6 +34,7 @@ const appRoutes: Routes = [
     CategoriesComponent,
     UserComponent,
     EditUserComponent,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
