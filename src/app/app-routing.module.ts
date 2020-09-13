@@ -7,12 +7,14 @@ import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuardService } from './services/guards/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [AuthGuardService],
     children: [
       { path: ':id/:name', component: UserComponent },
       { path: ':id/:name/edit', component: EditUserComponent },
