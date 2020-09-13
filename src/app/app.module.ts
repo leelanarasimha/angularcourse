@@ -12,6 +12,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     EditUserComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [AuthService, AuthGuardService],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [AuthService, AuthGuardService, DeactivateGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
