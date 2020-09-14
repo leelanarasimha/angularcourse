@@ -9,6 +9,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
+import { UserResolveService } from './services/resolvers/user-resolve.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { page: 1, search: 'Leela' } },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
         path: ':id/:name/edit',
         component: EditUserComponent,
         canDeactivate: [DeactivateGuardService],
+        resolve: { user: UserResolveService }
       },
     ],
   },
@@ -32,7 +34,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

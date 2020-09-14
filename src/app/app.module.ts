@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/guards/auth-guard.service';
+import { UserResolveService } from './services/resolvers/user-resolve.service';
+import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -26,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     PageNotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [AuthService, AuthGuardService, DeactivateGuardService],
+  providers: [AuthService, AuthGuardService, DeactivateGuardService, UserService, UserResolveService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

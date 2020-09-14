@@ -11,17 +11,19 @@ import { IDeactivateGuard } from './../services/guards/deactivate-guard.service'
 export class EditUserComponent implements OnInit, IDeactivateGuard {
   user: { id: string; name: string };
   editUserDetails: { id: string; name: string };
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.user = {
-        id: data['id'],
-        name: data['name'],
-      };
 
+    this.route.data.subscribe(data => {
+      console.log(data);
+      this.user = {
+        id: data['user']['id'],
+        name: data['user']['name'],
+      };
       this.editUserDetails = { ...this.user };
-    });
+    })
+
   }
 
   canExit() {
