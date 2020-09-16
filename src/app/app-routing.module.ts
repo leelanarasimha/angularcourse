@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuardService } from './services/guards/auth-guard.service';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
 import { UserResolveService } from './services/resolvers/user-resolve.service';
+import { TemplateFormComponent } from './template-form/template-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { page: 1, search: 'Leela' } },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   },
 
   { path: 'categories', component: CategoriesComponent },
+  { path: 'templateform', component: TemplateFormComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];

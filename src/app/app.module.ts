@@ -16,6 +16,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
 import { FormsModule } from '@angular/forms';
+import { TemplateFormComponent } from './template-form/template-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     UserComponent,
     EditUserComponent,
     PageNotFoundComponent,
+    TemplateFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, UserService, UserResolveService],
