@@ -1,30 +1,21 @@
 <ul class="nav flex-column">
   <li class="nav-item">
-    <a
-      [routerLink]="['/users', 1, 'Rama']"
-      [queryParams]="{ page: 1, search: 'Rama' }"
-      class="nav-link"
-      >Get Rama Details</a
-    >
+    <a [routerLink]="['/users', 1, 'Rama']" [queryParams]="{ page: 1, search: 'Rama' }" class="nav-link">Get Rama
+      Details</a>
   </li>
   <li class="nav-item">
-    <a
-      [routerLink]="['/users', 1, 'Krishna']"
-      [queryParams]="{ page: 1, search: 'Rama' }"
-      class="nav-link"
-      >Get Krishna Details</a
-    >
+    <a [routerLink]="['/users', 1, 'Krishna']" [queryParams]="{ page: 1, search: 'Rama' }" class="nav-link">Get Krishna
+      Details</a>
   </li>
   <li class="nav-item">
-    <a
-      [routerLink]="['/users', 1, 'Leela']"
-      [queryParams]="{ page: 1, search: 'Rama' }"
-      class="nav-link"
-      >Get Leela Details</a
-    >
+    <a [routerLink]="['/users', 1, 'Leela']" [queryParams]="{ page: 1, search: 'Rama' }" class="nav-link">Get Leela
+      Details</a>
   </li>
 </ul>
 
+<div>
+  <button type="button" (click)="onUserAddedClick()">User Added</button>
+</div>
 <div>
   <router-outlet></router-outlet>
 </div>
