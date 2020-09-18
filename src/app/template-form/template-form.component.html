@@ -4,7 +4,8 @@
             <form (ngSubmit)="onFormSubmit()" #f="ngForm">
                 <div class="form-group">
                     <label for="username">User Name</label>
-                    <input type="text" class="form-control" id="username" name="username" ngModel />
+                    <input type="text" class="form-control" (input)="checkData()" id="username" name="username"
+                        ngModel />
                 </div>
 
                 <div class="form-group">
