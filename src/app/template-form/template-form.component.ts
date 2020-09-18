@@ -25,4 +25,14 @@ export class TemplateFormComponent implements OnInit {
     console.log(this.signUpForm);
   }
 
+  fillValues() {
+    this.signUpForm.form.patchValue({
+      userData: {
+        email: 'leela@leela.com',
+        username: 'Leela'
+      },
+
+    })
+  }
+
 }

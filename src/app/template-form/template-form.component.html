@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <form (ngSubmit)="onFormSubmit()" #f="ngForm">
 
-
+                <button (click)="fillValues()" class="btn btn-sm btn-info"> Fill Values</button>
                 <div *ngIf="!userdata.valid && userdata.touched">User Data is Invalid</div>
                 <div ngModelGroup="userData" #userdata="ngModelGroup">
                     <div class="form-group">
