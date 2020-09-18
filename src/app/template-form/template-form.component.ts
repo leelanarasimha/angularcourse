@@ -9,6 +9,13 @@ import { NgForm } from '@angular/forms';
 export class TemplateFormComponent implements OnInit {
   gender = 'female';
   about = '';
+  submitted = false;
+  user = {
+    username: '',
+    email: '',
+    gender: '',
+    about: ''
+  }
 
   @ViewChild('f') signUpForm: NgForm;
 
@@ -22,7 +29,12 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log(this.signUpForm);
+    this.submitted = true;
+    this.user.username = this.signUpForm.value.userData.username;
+    this.user.email = this.signUpForm.value.userData.email;
+    this.user.gender = this.signUpForm.value.gender;
+    this.user.about = this.signUpForm.value.about;
+    this.signUpForm.reset();
   }
 
   fillValues() {
