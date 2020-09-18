@@ -7,6 +7,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent implements OnInit {
+  gender = 'female';
+  about = '';
 
   @ViewChild('f') signUpForm: NgForm;
 
