@@ -15,8 +15,9 @@ import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     EditUserComponent,
     PageNotFoundComponent,
     TemplateFormComponent,
+    ReactiveFormsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, UserService, UserResolveService],
   bootstrap: [AppComponent],
 })
