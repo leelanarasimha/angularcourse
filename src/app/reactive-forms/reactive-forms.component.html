@@ -1,19 +1,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form>
+            <form [formGroup]="signUpForm" (ngSubmit)='onSubmit()'>
                 <div class="form-group">
                     <label>UserName</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="username">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="email">
                 </div>
 
                 <div *ngFor="let gender of genders">
                     <label>
-                        <input type="radio" name="gender" [value]="gender" />{{gender}}
+                        <input type="radio" name="gender" [value]="gender" formControlName="gender" />{{gender}}
                     </label>
                 </div>
 
