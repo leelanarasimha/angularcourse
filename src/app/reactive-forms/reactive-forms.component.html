@@ -27,6 +27,16 @@
                     </label>
                 </div>
 
+                <div formArrayName="hobbies">
+                    <div class="my-2">
+                        <button type="button" (click)="onAddHobby()" class="btn btn-sm btn-warning">Add Hobby</button>
+                    </div>
+
+                    <div class="form-group" *ngFor="let hobby of hobbyControls; let i = index">
+                        <input type="text" class="form-control" [formControlName]="i" />
+                    </div>
+                </div>
+
                 <div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </div>
