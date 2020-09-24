@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
+import { ShortenPipe } from './Pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
     TemplateFormComponent,
     ReactiveFormsComponent,
     FilterPipesComponent,
+    ShortenPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, UserService, UserResolveService],
