@@ -18,6 +18,7 @@ import { DeactivateGuardService } from './services/guards/deactivate-guard.servi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
+    FilterPipesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [AuthService, AuthGuardService, DeactivateGuardService, UserService, UserResolveService],
