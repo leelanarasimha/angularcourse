@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-pipes.component.css']
 })
 export class FilterPipesComponent implements OnInit {
-
+  filteredString: string = '';
   users = [{
     name: 'Leela',
     joinedDate: new Date(15, 2, 2016)
@@ -24,6 +24,13 @@ export class FilterPipesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAddUser() {
+    this.users.push({
+      name: 'Sample',
+      joinedDate: new Date(12, 2, 2009)
+    })
   }
 
 }
