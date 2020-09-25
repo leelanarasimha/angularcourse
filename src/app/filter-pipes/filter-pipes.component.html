@@ -4,6 +4,10 @@
             <button (click)="onAddUser()">Add User</button>
         </div>
     </div>
+
+    <div class="my-2">
+        {{appStatus | async}}
+    </div>
     <div class="row">
         <div class="col-md-12">
             <input type="text" class="form-control" [(ngModel)]="filteredString" />

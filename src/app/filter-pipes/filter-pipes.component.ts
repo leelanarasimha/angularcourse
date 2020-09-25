@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-pipes.component.css']
 })
 export class FilterPipesComponent implements OnInit {
+
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Users Data Received');
+    }, 3000);
+  })
   filteredString: string = '';
   users = [{
     name: 'Leela',
