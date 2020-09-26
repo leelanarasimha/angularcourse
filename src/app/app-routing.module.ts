@@ -14,6 +14,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
+import { PostsComponent } from './posts/posts.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { page: 1, search: 'Leela' } },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'templateform', component: TemplateFormComponent },
   { path: 'reactiveform', component: ReactiveFormsComponent },
   { path: 'filterpipes', component: FilterPipesComponent },
+  { path: 'posts', component: PostsComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];
