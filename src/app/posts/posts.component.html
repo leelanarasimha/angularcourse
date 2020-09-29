@@ -1,24 +1,48 @@
 <div class="container">
-    <div class="col-md-12">
-        <form [formGroup]="postForm" (ngSubmit)="onCreatePost()">
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" formControlName="title" />
+  <div class="col-md-12">
+    <form [formGroup]="postForm" (ngSubmit)="onCreatePost()">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" formControlName="title" />
 
-                <div class="help-text" *ngIf="!postForm.get('title').valid && postForm.get('title').touched">Title is
-                    Required</div>
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <textarea class="form-control" formControlName="content"></textarea>
-                <div class="help-text" *ngIf="!postForm.get('content').valid && postForm.get('content').touched">Content
-                    is
-                    Required</div>
-            </div>
+        <div
+          class="help-text"
+          *ngIf="!postForm.get('title').valid && postForm.get('title').touched"
+        >
+          Title is Required
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Content</label>
+        <textarea class="form-control" formControlName="content"></textarea>
+        <div
+          class="help-text"
+          *ngIf="
+            !postForm.get('content').valid && postForm.get('content').touched
+          "
+        >
+          Content is Required
+        </div>
+      </div>
 
-            <div class="my-2">
-                <button type="submit" class="btn btn-primary">Add Post</button>
-            </div>
-        </form>
-    </div>
+      <div class="my-2">
+        <button type="submit" class="btn btn-primary">Add Post</button>
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <table class="table">
+      <thead>
+        <th>Title</th>
+        <th>Content</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <td>{{post.title}}</td>
+          <td>{{post.content}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
