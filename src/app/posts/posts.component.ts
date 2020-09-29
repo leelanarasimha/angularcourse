@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
-
+import { Post } from './Post.model';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class PostsComponent implements OnInit {
   postForm: FormGroup;
-  posts;
+  posts: Post[];
 
   constructor(private http: HttpClient) {}
 
@@ -24,17 +24,19 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.http
-      .get(`https://ng-complete-guide-aad09.firebaseio.com/posts.json`)
+      .get<{ [key: string]: Post }>(
+        `https://ng-complete-guide-aad09.firebaseio.com/posts.json`
+      )
       .pipe(
         map((response) => {
-          let posts = [];
+          let posts: Post[] = [];
           for (let key in response) {
             posts.push({ ...response[key], key });
           }
           return posts;
         })
       )
-      .subscribe((response) => {
+      .subscribe((response: Post[]) => {
         this.posts = response;
       });
   }
@@ -42,7 +44,7 @@ export class PostsComponent implements OnInit {
   onCreatePost() {
     const postData = this.postForm.value;
     this.http
-      .post(
+      .post<{ name: string }>(
         'https://ng-complete-guide-aad09.firebaseio.com/posts.json',
         postData
       )
