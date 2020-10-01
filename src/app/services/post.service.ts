@@ -29,4 +29,11 @@ export class PostService {
       postData
     );
   }
+  clearPosts() {
+    this.http
+      .delete('https://ng-complete-guide-aad09.firebaseio.com/posts.json')
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
 }

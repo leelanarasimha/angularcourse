@@ -34,4 +34,10 @@ export class PostsComponent implements OnInit {
       this.getPosts();
     });
   }
+
+  onClearPosts(event: Event) {
+    event.preventDefault();
+    this.postService.clearPosts();
+    this.posts = [];
+  }
 }
