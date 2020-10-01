@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { PostService } from '../services/post.service';
 import { Post } from './Post.model';
 @Component({
   selector: 'app-posts',
@@ -12,7 +12,7 @@ export class PostsComponent implements OnInit {
   postForm: FormGroup;
   posts: Post[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -23,33 +23,15 @@ export class PostsComponent implements OnInit {
   }
 
   getPosts() {
-    this.http
-      .get<{ [key: string]: Post }>(
-        `https://ng-complete-guide-aad09.firebaseio.com/posts.json`
-      )
-      .pipe(
-        map((response) => {
-          let posts: Post[] = [];
-          for (let key in response) {
-            posts.push({ ...response[key], key });
-          }
-          return posts;
-        })
-      )
-      .subscribe((response: Post[]) => {
-        this.posts = response;
-      });
+    this.postService.fetchPosts().subscribe((response) => {
+      this.posts = response;
+    });
   }
 
   onCreatePost() {
-    const postData = this.postForm.value;
-    this.http
-      .post<{ name: string }>(
-        'https://ng-complete-guide-aad09.firebaseio.com/posts.json',
-        postData
-      )
-      .subscribe((response) => {
-        this.getPosts();
-      });
+    const postData: Post = this.postForm.value;
+    this.postService.createPost(postData).subscribe((response) => {
+      this.getPosts();
+    });
   }
 }
