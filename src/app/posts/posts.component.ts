@@ -38,6 +38,7 @@ export class PostsComponent implements OnInit {
   onCreatePost() {
     const postData: Post = this.postForm.value;
     this.postService.createPost(postData).subscribe((response) => {
+      console.log(response);
       this.getPosts();
     });
   }

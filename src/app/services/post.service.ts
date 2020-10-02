@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEventType,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { Post } from '../posts/Post.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
@@ -41,14 +46,29 @@ export class PostService {
         headers: new HttpHeaders({
           'custom-header': 'post Leela',
         }),
+        observe: 'body',
       }
     );
   }
   clearPosts() {
     this.http
-      .delete('https://ng-complete-guide-aad09.firebaseio.com/posts.json')
+      .delete('https://ng-complete-guide-aad09.firebaseio.com/posts.json', {
+        observe: 'events',
+        responseType: 'text',
+      })
+      .pipe(
+        tap((response) => {
+          if (response.type === HttpEventType.Sent) {
+            console.log('request sent');
+          }
+
+          if (response.type === HttpEventType.Response) {
+            console.log(response);
+          }
+        })
+      )
       .subscribe((response) => {
-        console.log(response);
+        //console.log(response);
       });
   }
 }
