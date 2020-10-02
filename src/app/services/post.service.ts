@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../posts/Post.model';
 import { map } from 'rxjs/operators';
 
@@ -10,7 +10,12 @@ export class PostService {
   fetchPosts() {
     return this.http
       .get<{ [key: string]: Post }>(
-        `https://ng-complete-guide-aad09.firebaseio.com/posts.json`
+        `https://ng-complete-guide-aad09.firebaseio.com/posts.json`,
+        {
+          headers: new HttpHeaders({
+            'custom-header': 'leela',
+          }),
+        }
       )
       .pipe(
         map((response) => {
@@ -26,7 +31,12 @@ export class PostService {
   createPost(postData: Post) {
     return this.http.post<{ name: string }>(
       'https://ng-complete-guide-aad09.firebaseio.com/posts.json',
-      postData
+      postData,
+      {
+        headers: new HttpHeaders({
+          'custom-header': 'post Leela',
+        }),
+      }
     );
   }
   clearPosts() {

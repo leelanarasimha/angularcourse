@@ -11,6 +11,7 @@ import { Post } from './Post.model';
 export class PostsComponent implements OnInit {
   postForm: FormGroup;
   posts: Post[];
+  error = null;
 
   constructor(private postService: PostService) {}
 
@@ -23,9 +24,15 @@ export class PostsComponent implements OnInit {
   }
 
   getPosts() {
-    this.postService.fetchPosts().subscribe((response) => {
-      this.posts = response;
-    });
+    this.postService.fetchPosts().subscribe(
+      (response) => {
+        this.posts = response;
+      },
+      (error) => {
+        console.log(error);
+        this.error = error.message;
+      }
+    );
   }
 
   onCreatePost() {
