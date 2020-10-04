@@ -1,3 +1,4 @@
+import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
         path: ':id/:name/edit',
         component: EditUserComponent,
         canDeactivate: [DeactivateGuardService],
-        resolve: { user: UserResolveService }
+        resolve: { user: UserResolveService },
       },
     ],
   },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'reactiveform', component: ReactiveFormsComponent },
   { path: 'filterpipes', component: FilterPipesComponent },
   { path: 'posts', component: PostsComponent },
+  { path: 'auth', component: AuthComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];
@@ -46,4 +48,4 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

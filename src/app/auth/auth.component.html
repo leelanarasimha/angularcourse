@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" />
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary">
+          {{ isLoginMode ? "Login" : "SignUp" }}
+        </button>
+        |
+        <button type="button" class="btn btn-primary" (click)="onSwitchMode()">
+          Switch to {{ isLoginMode ? "SignUp" : "Login" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
