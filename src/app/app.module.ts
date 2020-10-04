@@ -24,6 +24,7 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { PostsComponent } from './posts/posts.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { LoggingInterceptorService } from './services/logging-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,11 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
       multi: true,
     },
     AuthService,
