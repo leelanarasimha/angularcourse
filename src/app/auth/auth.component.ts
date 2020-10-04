@@ -1,3 +1,4 @@
+import { FormControl, NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,5 +10,18 @@ export class AuthComponent {
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  onFormSubmit(authForm: NgForm) {
+    console.log(authForm.value);
+  }
+
+  getPasswordErrors(password: FormControl) {
+    if (password.errors.required) {
+      return 'Password Required';
+    }
+    if (password.errors.minlength) {
+      return 'password is of 6 characters';
+    }
   }
 }
