@@ -1,3 +1,4 @@
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthComponent } from './auth/auth.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -43,6 +44,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     FilterPipe,
     PostsComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
