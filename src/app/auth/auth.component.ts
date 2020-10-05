@@ -1,5 +1,6 @@
 import { FormControl, NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -8,12 +9,31 @@ import { Component } from '@angular/core';
 export class AuthComponent {
   isLoginMode = true;
 
+  constructor(private authService: AuthService) {}
+
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
 
   onFormSubmit(authForm: NgForm) {
-    console.log(authForm.value);
+    if (!authForm.valid) {
+      return;
+    }
+
+    if (this.isLoginMode) {
+      //Perform Login Request Call
+    } else {
+      this.authService
+        .signUp(authForm.value.email, authForm.value.password)
+        .subscribe(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
   }
 
   getPasswordErrors(password: FormControl) {
