@@ -12,18 +12,20 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'angularrouting';
   userAdded = false;
   userAddedSubscription: Subscription;
-  constructor(private authService: AuthService, private userService: UserService) { }
-
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    this.userAddedSubscription = this.userService.userAddedEvent.subscribe(data => {
-      this.userAdded = data;
-    })
+    this.userAddedSubscription = this.userService.userAddedEvent.subscribe(
+      (data) => {
+        this.userAdded = data;
+      }
+    );
   }
 
-  onLoginClick() {
-    this.authService.login();
-  }
+  onLoginClick() {}
 
   onLogoutClick() {
     this.authService.logout();

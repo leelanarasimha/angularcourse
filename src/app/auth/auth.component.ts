@@ -1,3 +1,5 @@
+import { AuthResponseData } from './../services/auth.service';
+import { Observable } from 'rxjs';
 import { FormControl, NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
@@ -23,23 +25,32 @@ export class AuthComponent {
     }
 
     this.isLoading = true;
+    this.error = null;
+
+    let authObs: Observable<AuthResponseData>;
 
     if (this.isLoginMode) {
-      //Perform Login Request Call
+      authObs = this.authService.login(
+        authForm.value.email,
+        authForm.value.password
+      );
     } else {
-      this.authService
-        .signUp(authForm.value.email, authForm.value.password)
-        .subscribe(
-          (response) => {
-            console.log(response);
-            this.isLoading = false;
-          },
-          (errorMessage) => {
-            this.error = errorMessage;
-            this.isLoading = false;
-          }
-        );
+      authObs = this.authService.signUp(
+        authForm.value.email,
+        authForm.value.password
+      );
     }
+
+    authObs.subscribe(
+      (response) => {
+        console.log(response);
+        this.isLoading = false;
+      },
+      (errorMessage) => {
+        this.error = errorMessage;
+        this.isLoading = false;
+      }
+    );
   }
 
   getPasswordErrors(password: FormControl) {
