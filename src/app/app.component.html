@@ -1,67 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <ul class="nav flex-column nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/auth" routerLinkActive="active"
-            >Authenticate</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/users" routerLinkActive="active"
-            >Users</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/categories']"
-            routerLinkActive="active"
-            >Categories</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/templateform']"
-            routerLinkActive="active"
-            >Template Form</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/reactiveform']"
-            routerLinkActive="active"
-            >Reactive Form</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/filterpipes']"
-            routerLinkActive="active"
-            >Filter Pipes</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/posts']"
-            routerLinkActive="active"
-            >Posts</a
-          >
-        </li>
-      </ul>
+      <app-navigation></app-navigation>
     </div>
 
     <div class="col-md-9">
