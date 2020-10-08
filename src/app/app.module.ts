@@ -1,3 +1,4 @@
+import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthComponent } from './auth/auth.component';
@@ -64,6 +65,11 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptorService,
       multi: true,
     },
     AuthService,

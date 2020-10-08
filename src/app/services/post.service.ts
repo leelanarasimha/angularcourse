@@ -14,26 +14,19 @@ export class PostService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   fetchPosts() {
-    return this.authService.userSub.pipe(
-      take(1),
-      switchMap((user) => {
-        let searchParams = new HttpParams();
-        searchParams = searchParams.append('auth', user.token);
-        return this.http.get<{ [key: string]: Post }>(
-          `https://ng-complete-guide-aad09.firebaseio.com/posts.json`,
-          {
-            params: searchParams,
+    return this.http
+      .get<{ [key: string]: Post }>(
+        `https://ng-complete-guide-aad09.firebaseio.com/posts.json`
+      )
+      .pipe(
+        map((response) => {
+          let posts: Post[] = [];
+          for (let key in response) {
+            posts.push({ ...response[key], key });
           }
-        );
-      }),
-      map((response) => {
-        let posts: Post[] = [];
-        for (let key in response) {
-          posts.push({ ...response[key], key });
-        }
-        return posts;
-      })
-    );
+          return posts;
+        })
+      );
   }
 
   createPost(postData: Post) {
