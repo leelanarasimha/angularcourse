@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
@@ -6,36 +7,33 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { Post } from '../posts/Post.model';
-import { map, tap } from 'rxjs/operators';
+import { map, take, tap, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   fetchPosts() {
-    let searchParams = new HttpParams();
-    searchParams = searchParams.append('custom', 'hai');
-    searchParams = searchParams.append('name', 'Leela');
-
-    return this.http
-      .get<{ [key: string]: Post }>(
-        `https://ng-complete-guide-aad09.firebaseio.com/posts.json`,
-        {
-          headers: new HttpHeaders({
-            'custom-header': 'leela',
-          }),
-          params: searchParams,
-        }
-      )
-      .pipe(
-        map((response) => {
-          let posts: Post[] = [];
-          for (let key in response) {
-            posts.push({ ...response[key], key });
+    return this.authService.userSub.pipe(
+      take(1),
+      switchMap((user) => {
+        let searchParams = new HttpParams();
+        searchParams = searchParams.append('auth', user.token);
+        return this.http.get<{ [key: string]: Post }>(
+          `https://ng-complete-guide-aad09.firebaseio.com/posts.json`,
+          {
+            params: searchParams,
           }
-          return posts;
-        })
-      );
+        );
+      }),
+      map((response) => {
+        let posts: Post[] = [];
+        for (let key in response) {
+          posts.push({ ...response[key], key });
+        }
+        return posts;
+      })
+    );
   }
 
   createPost(postData: Post) {
