@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/guards/auth.guard';
 import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
   { path: 'templateform', component: TemplateFormComponent },
   { path: 'reactiveform', component: ReactiveFormsComponent },
   { path: 'filterpipes', component: FilterPipesComponent },
-  { path: 'posts', component: PostsComponent },
+  { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' },
