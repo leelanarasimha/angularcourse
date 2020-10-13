@@ -1,7 +1,8 @@
+import { AlertModalComponent } from './../shared/alert-modal/alert-modal.component';
 import { AuthResponseData } from './../services/auth.service';
 import { Observable } from 'rxjs';
 import { FormControl, NgForm } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -14,7 +15,8 @@ export class AuthComponent {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private ComponentFactoryResolver: ComponentFactoryResolver) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -50,9 +52,14 @@ export class AuthComponent {
       },
       (errorMessage) => {
         this.error = errorMessage;
+        this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
+  }
+
+  showErrorAlert(message: string) {
+   const componentFactory = this.ComponentFactoryResolver.resolveComponentFactory(AlertModalComponent);
   }
 
   getPasswordErrors(password: FormControl) {
