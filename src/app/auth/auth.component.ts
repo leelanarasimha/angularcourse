@@ -1,8 +1,9 @@
+import { PlaceholderDirective } from './../shared/Placeholder.directive';
 import { AlertModalComponent } from './../shared/alert-modal/alert-modal.component';
 import { AuthResponseData } from './../services/auth.service';
 import { Observable } from 'rxjs';
 import { FormControl, NgForm } from '@angular/forms';
-import { Component, ComponentFactoryResolver } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ export class AuthComponent {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
+  @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
 
   constructor(private authService: AuthService, private router: Router,
     private ComponentFactoryResolver: ComponentFactoryResolver) {}
@@ -60,6 +62,8 @@ export class AuthComponent {
 
   showErrorAlert(message: string) {
    const componentFactory = this.ComponentFactoryResolver.resolveComponentFactory(AlertModalComponent);
+   this.alertHost.ViewContainerRef.clear();
+   this.alertHost.ViewContainerRef.createComponent(componentFactory);
   }
 
   getPasswordErrors(password: FormControl) {

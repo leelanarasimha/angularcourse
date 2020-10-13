@@ -59,6 +59,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     ReactiveFormsModule,
     HttpClientModule,
   ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
