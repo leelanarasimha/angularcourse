@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="alert alert-danger my-4" *ngIf="error">
+    <!-- <div class="alert alert-danger my-4" *ngIf="error">
       {{ error }}
-    </div>
+    </div> -->
 
+    <app-alert-modal *ngIf="error" [error]="error" (close)="error=null"></app-alert-modal>
     <div *ngIf="isLoading" class="text-center my-4">
       <app-loading-spinner></app-loading-spinner>
     </div>

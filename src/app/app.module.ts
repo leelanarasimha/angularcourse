@@ -1,3 +1,4 @@
+import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
@@ -48,6 +49,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
+    AlertModalComponent
   ],
   imports: [
     BrowserModule,
