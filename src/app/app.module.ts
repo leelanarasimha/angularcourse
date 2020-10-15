@@ -1,5 +1,5 @@
+import { UserModule } from './user.module';
 import { PlaceholderDirective } from './shared/Placeholder.directive';
-import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
@@ -16,10 +16,7 @@ import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { UserComponent } from './user/user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,10 +33,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
   declarations: [
     AppComponent,
     HomeComponent,
-    UsersComponent,
     CategoriesComponent,
-    UserComponent,
-    EditUserComponent,
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
@@ -58,6 +52,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    UserModule
   ],
 
   providers: [

@@ -1,16 +1,9 @@
 <ul class="nav flex-column">
-  <li class="nav-item">
-    <a [routerLink]="['/users', 1, 'Rama']" [queryParams]="{ page: 1, search: 'Rama' }" class="nav-link">Get Rama
+  <li class="nav-item" *ngFor="let user of usersData">
+    <a [routerLink]="['/users', 1, user]" [queryParams]="{ page: 1, search: user }" class="nav-link">Get {{user}}
       Details</a>
   </li>
-  <li class="nav-item">
-    <a [routerLink]="['/users', 1, 'Krishna']" [queryParams]="{ page: 1, search: 'Rama' }" class="nav-link">Get Krishna
-      Details</a>
-  </li>
-  <li class="nav-item">
-    <a [routerLink]="['/users', 1, 'Leela']" [queryParams]="{ page: 1, search: 'Rama' }" class="nav-link">Get Leela
-      Details</a>
-  </li>
+
 </ul>
 
 <div>
