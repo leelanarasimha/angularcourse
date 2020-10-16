@@ -48,11 +48,11 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
   ],
   imports: [
     BrowserModule,
+    UserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    UserModule
   ],
 
   providers: [
