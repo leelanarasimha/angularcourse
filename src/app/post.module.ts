@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
+      { path: '', component: PostsComponent, canActivate: [AuthGuard] },
     ])
   ]
 })
