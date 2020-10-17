@@ -1,3 +1,4 @@
+import { FilterModule } from './filter.module';
 import { AuthModule } from './auth.module';
 import { PostModule } from './post.module';
 import { UserModule } from './user.module';
@@ -24,9 +25,6 @@ import { DeactivateGuardService } from './services/guards/deactivate-guard.servi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
-import { ShortenPipe } from './Pipes/shorten.pipe';
-import { FilterPipe } from './Pipes/filter.pipe';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 
@@ -38,9 +36,6 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     PageNotFoundComponent,
     TemplateFormComponent,
     ReactiveFormsComponent,
-    FilterPipesComponent,
-    ShortenPipe,
-    FilterPipe,
     LoadingSpinnerComponent,
     NavigationComponent,
     PlaceholderDirective
@@ -50,6 +45,7 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     UserModule,
     PostModule,
     AuthModule,
+    FilterModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
