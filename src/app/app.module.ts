@@ -1,9 +1,11 @@
+import { AuthModule } from './auth.module';
+import { PostModule } from './post.module';
 import { UserModule } from './user.module';
 import { PlaceholderDirective } from './shared/Placeholder.directive';
 import { AuthTokenInterceptorService } from './services/auth-token-interceptor.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { AuthComponent } from './auth/auth.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +27,6 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { FilterPipesComponent } from './filter-pipes/filter-pipes.component';
 import { ShortenPipe } from './Pipes/shorten.pipe';
 import { FilterPipe } from './Pipes/filter.pipe';
-import { PostsComponent } from './posts/posts.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoggingInterceptorService } from './services/logging-interceptor.service';
 
@@ -40,8 +41,6 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
     FilterPipesComponent,
     ShortenPipe,
     FilterPipe,
-    PostsComponent,
-    AuthComponent,
     LoadingSpinnerComponent,
     NavigationComponent,
     PlaceholderDirective
@@ -49,6 +48,8 @@ import { LoggingInterceptorService } from './services/logging-interceptor.servic
   imports: [
     BrowserModule,
     UserModule,
+    PostModule,
+    AuthModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
