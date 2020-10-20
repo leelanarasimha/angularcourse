@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -9,6 +9,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { page: 1, search: 'Leela' } },
+  {path: 'users', loadChildren: () => import ('./user.module').then(m => m.UserModule)},
+  {path: 'posts', loadChildren: () => import ('./post.module').then(m => m.PostModule)},
   { path: 'categories', component: CategoriesComponent },
   { path: 'templateform', component: TemplateFormComponent },
   { path: 'reactiveform', component: ReactiveFormsComponent },
@@ -17,7 +19,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

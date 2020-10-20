@@ -1,3 +1,4 @@
+import { DummyService } from './services/dummy.service';
 import { SharedModule } from './shared.module';
 import { UserRoutingModule } from './user-routing.module';
 import { UsersComponent } from './users/users.component';

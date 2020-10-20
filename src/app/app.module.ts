@@ -1,3 +1,5 @@
+import { DummyService } from './services/dummy.service';
+import { SharedModule } from './shared.module';
 import { CoreModule } from './core.module';
 import { FilterModule } from './filter.module';
 import { AuthModule } from './auth.module';
@@ -35,14 +37,13 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
   imports: [
     BrowserModule,
     CoreModule,
-    UserModule,
-    PostModule,
     AuthModule,
     FilterModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule
   ],
 
 

@@ -1,3 +1,4 @@
+import { DummyService } from './services/dummy.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
     CommonModule],
   exports: [ShortenPipe,
     FilterPipe,FormsModule,
-    CommonModule]
+    CommonModule],
+    providers: [DummyService]
 })
 export class SharedModule {
 

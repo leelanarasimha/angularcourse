@@ -1,3 +1,4 @@
+import { DummyService } from './services/dummy.service';
 import { UserResolveService } from './services/resolvers/user-resolve.service';
 import { UserService } from './services/user.service';
 import { DeactivateGuardService } from './services/guards/deactivate-guard.service';

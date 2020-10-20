@@ -1,3 +1,4 @@
+import { DummyService } from './services/dummy.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
@@ -14,11 +15,13 @@ export class AppComponent implements OnInit, OnDestroy {
   userAddedSubscription: Subscription;
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private DummyService: DummyService
   ) {}
 
   ngOnInit() {
     this.authService.autoLogin();
+    this.DummyService.printLog('Hello from App Component');
   }
 
   onLoginClick() {}
